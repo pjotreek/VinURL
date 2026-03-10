@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.util.concurrent.CompletableFuture;
 
 import static com.vinurl.client.VinURLClient.CLIENT;
+import static com.vinurl.client.VinURLClient.CONFIG;
 import static com.vinurl.util.Constants.MOD_ID;
 
 
@@ -26,6 +27,7 @@ public class Commands {
 				.then(ClientCommandManager.literal("delete").executes(Commands::deleteAudioFiles))
 				.then(ClientCommandManager.literal("update").executes(Commands::updateExecutables))
 				.then(ClientCommandManager.literal("config").executes(Commands::openConfig))
+				.then(ClientCommandManager.literal("equalizer").executes(Commands::toggleEqualizer))
 			)
 		);
 	}
@@ -53,6 +55,15 @@ public class Commands {
 			}
 			ctx.getSource().sendFeedback(Component.translatable("command.vinurl.update.latest"));
 		});
+		return 1;
+	}
+
+	private static int toggleEqualizer(CommandContext<FabricClientCommandSource> ctx) {
+		boolean newValue = !CONFIG.equalizer();
+		CONFIG.equalizer(newValue);
+		ctx.getSource().sendFeedback(Component.translatable(
+			newValue ? "command.vinurl.equalizer.enabled" : "command.vinurl.equalizer.disabled"
+		));
 		return 1;
 	}
 

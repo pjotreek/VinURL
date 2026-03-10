@@ -27,6 +27,10 @@
   "command.vinurl.delete.exception": "Deleted only non active audio files",
   "command.vinurl.update.check": "Checking for updates...",
   "command.vinurl.update.latest": "Everything is up to date!",
+  "command.vinurl.equalizer.enabled": "Equalizer enabled - all music plays at full volume",
+  "command.vinurl.equalizer.disabled": "Equalizer disabled - music volume varies with distance",
+  "text.config.VinURLConfig.option.equalizer": "Equalizer",
+  "text.config.VinURLConfig.option.equalizer.tooltip": "Play all jukebox music at constant volume regardless of distance",
   "gui.vinurl.button.duration.tooltip" : "Automatic Duration",
   "gui.vinurl.button.duration.tooltip.calculating" : "Calculating..."
 }

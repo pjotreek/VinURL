@@ -20,6 +20,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import static com.vinurl.util.Constants.DURATION_KEY;
+import static com.vinurl.util.Constants.LOOP_KEY;
 
 @Mixin(JukeboxBlockEntity.class)
 public abstract class JukeboxMixin extends BlockEntity {
@@ -53,9 +54,14 @@ public abstract class JukeboxMixin extends BlockEntity {
 		if (level == null || level.isClientSide()) {return;}
 		CompoundTag tag = blockEntity.getTheItem().getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
 		JukeboxSongPlayer manager = blockEntity.getSongPlayer();
-		if (tag.has(DURATION_KEY) && manager.getTicksSinceSongStarted() > tag.get(DURATION_KEY) * 20L) {
+		boolean isLoop = tag.get(LOOP_KEY);
+		if (!isLoop && tag.has(DURATION_KEY) && manager.getTicksSinceSongStarted() > tag.get(DURATION_KEY) * 20L) {
 			manager.stop(level, state);
 			VinURLSound.stopAt((ServerLevel) level, blockEntity.getTheItem(), pos, false);
+		}
+
+		if (level.getGameTime() % 20 == 0) {
+			VinURLSound.tickJukebox((ServerLevel) level, pos);
 		}
 	}
 }

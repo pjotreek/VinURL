@@ -1,8 +1,10 @@
 package com.vinurl;
 
+import com.vinurl.api.VinURLSound;
 import com.vinurl.item.URLDisc;
 import com.vinurl.net.ServerEvent;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -22,5 +24,7 @@ public class VinURL implements ModInitializer {
 		ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.TOOLS_AND_UTILITIES).register((itemGroup) -> itemGroup.accept(CUSTOM_RECORD));
 
 		ServerEvent.register();
+
+		ServerLifecycleEvents.SERVER_STOPPING.register((server) -> VinURLSound.clearAll());
 	}
 }

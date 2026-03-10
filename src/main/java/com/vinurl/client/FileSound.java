@@ -18,6 +18,7 @@ import java.io.InputStream;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
 
+import static com.vinurl.client.VinURLClient.CONFIG;
 import static com.vinurl.util.Constants.PLACEHOLDER_SOUND_ID;
 
 public class FileSound extends AbstractSoundInstance {
@@ -31,6 +32,9 @@ public class FileSound extends AbstractSoundInstance {
 			this.x = pos.getCenter().x;
 			this.y = pos.getCenter().y;
 			this.z = pos.getCenter().z;
+			if (CONFIG.equalizer()) {
+				this.attenuation = Attenuation.NONE;
+			}
 		}
 		else {
 			this.attenuation = Attenuation.NONE;

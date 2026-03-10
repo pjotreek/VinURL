@@ -33,6 +33,7 @@ public class ClientConfig {
 	}
 
 	@SectionHeader("audioSettings")
+	public boolean equalizer = false;
 	public AudioQuality audioBitrate = AudioQuality.MEDIUM;
 
 	public enum AudioQuality {
