@@ -15,7 +15,7 @@ import net.minecraft.world.item.Item;
 import static com.vinurl.util.Constants.*;
 
 public class VinURL implements ModInitializer {
-	public static final Item CUSTOM_RECORD = Registry.register(BuiltInRegistries.ITEM, CUSTOM_RECORD_ID, new URLDisc());
+	public static final Item CUSTOM_RECORD = Registry.register(BuiltInRegistries.ITEM, CUSTOM_RECORD_KEY, new URLDisc());
 
 	@Override
 	public void onInitialize() {

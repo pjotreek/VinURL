@@ -7,6 +7,7 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.JukeboxSong;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +23,7 @@ public class Constants {
 	//resources
 	public static final ResourceLocation PLACEHOLDER_SOUND_ID = ResourceLocation.fromNamespaceAndPath(MOD_ID, "placeholder_sound");
 	public static final ResourceLocation CUSTOM_RECORD_ID = ResourceLocation.fromNamespaceAndPath(MOD_ID, "custom_record");
+	public static final ResourceKey<Item> CUSTOM_RECORD_KEY = ResourceKey.create(Registries.ITEM, CUSTOM_RECORD_ID);
 	public static final ResourceLocation NETWORK_ID = ResourceLocation.fromNamespaceAndPath(MOD_ID, "network_channel");
 	public static final ResourceLocation URL_DISC_SCREEN_ID = ResourceLocation.fromNamespaceAndPath(MOD_ID, "disc_url_screen");
 	public static final ResourceLocation SIMULATE_BUTTON_ID = ResourceLocation.fromNamespaceAndPath(MOD_ID, "simulate_button");

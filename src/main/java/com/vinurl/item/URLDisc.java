@@ -19,6 +19,7 @@ public class URLDisc extends Item {
 
 	public URLDisc() {
 		super(new Item.Properties()
+			.setId(CUSTOM_RECORD_KEY)
 			.stacksTo(1)
 			.rarity(Rarity.RARE)
 			.jukeboxPlayable(SONG_KEY));
